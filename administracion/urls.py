@@ -20,8 +20,11 @@ from core import views
 urlpatterns = [
     path('', views.home, name="home"),
     path('login/', views.login, name="login"),
+    path('registrase/', views.registrarse, name="registrarse"),
+    path('recuperarContrasenia/', views.recuperarContrasenia, name="recuperarContrasenia"),
     path('empresas/', views.empresas, name="empresas"),
     path('productoServicios/', views.productoServicios, name="productoServicios"),
     path('reportes/', views.reportes, name="reportes"),
+    path('crearEmpresa/',views.crearEmpresa, name="crearEmpresa"),
     path('admin/', admin.site.urls), 
 ]

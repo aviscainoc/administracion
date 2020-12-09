@@ -1,0 +1,99 @@
+{% extends 'core/base.html' %}
+{% block title %}Empresas{% endblock %}
+
+{% block content %}
+    
+    <div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="well well-sm">
+                <form class="form-horizontal" method="post">
+                    <fieldset>
+                        <legend class="text-center header"> Crear Empresa </legend>
+
+                        <div class="form-group">
+                            <span class="col-md-1 col-md-offset-2 text-center"><i class="material-icons"></i></span>
+                            <div class="col-md-8">
+                                <input id="fname" name="name" type="text" placeholder="Nombre Empresa......" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <span class="col-md-1 col-md-offset-2 text-center"><i class=""></i></span>
+                            <div class="col-md-8">
+                                <input id="lname" name="name" type="text" placeholder="Eslogan......." class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <span class="col-md-1 col-md-offset-2 text-center"><i class=""></i></span>
+                            <div class="col-md-8">
+                                <input id="email" name="email" type="text" placeholder="Descripcion de la empresa......" class="form-control">
+                            </div>
+                        </div>
+                        <!-- valor de la class  fa fa-phone-square bigicon-->
+                        <div class="form-group">
+                            <span class="col-md-1 col-md-offset-2 text-center"><i class=""></i></span>
+                            <div class="col-md-8">
+                                <input id="phone" name="phone" type="text" placeholder="Facebook...." class="form-control">
+                            </div>
+
+                            <span class="col-md-1 col-md-offset-2 text-center"><i class=""></i></span>
+                             <div class="col-md-8">
+                                <input id="phone" name="phone" type="text" placeholder="Twritter...." class="form-control">
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <span class="col-md-1 col-md-offset-2 text-center"><i class=""></i></span>
+                            <div class="col-md-8">
+                                <input id="email" name="email" type="text" placeholder="Pagina Web......" class="form-control">
+                            </div>
+                        </div>
+    								
+						<div class="row">
+
+							<div class="col-md-12 mr-auto">
+								<div class="form-group">
+
+									<div class="input-group">
+
+										<label class="label-control"> Seleccione una categeoria: <br />
+                                            <span class="ui-chkbox-icon ui-icon ui-icon-blank ui-c">
+                                                
+                                                {% for i in categoriaempresa %}
+                                                    
+                                                    <input type="checkbox" value= "{{i.1}}"> {{i.1}} <br />
+                                                    
+                                                {% endfor %}
+                                            
+										
+										</div>
+
+									</div>
+								</div>
+						</div>                    
+                        
+                        
+                        <div class="form-group">
+                            <div class="col-md-12 text-center">
+                                <button type="submit" class="btn btn-primary btn-lg">Guardar</button>
+                            </div>
+                        </div>
+
+                         <div class="form-group">
+                            <div class="col-md-12 text-center">
+                                <button type="submit" class="btn btn-primary btn-lg">Aprobar Publicacion</button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+    
+      
+
+{% endblock %}
+ 
+ 
