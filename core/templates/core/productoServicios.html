@@ -95,7 +95,18 @@
                                             <tr>
                                                 <td>{{i.0}}</td>
                                                 <td>{{i.1}}</td>
-                                                <td>{{i.2}}</td>
+                                                <td>
+                                                {% if i.2 == 'AP'%}
+                                                Aprobado
+                                                {% elif i.2 == 'PEN' %}
+                                                Pendiente
+                                                {% elif i.2 == 'PAU' %}
+                                                Pausado
+                                                {% elif i.2 == 'ELM' %}
+                                                Eliminado
+                                                {% endif %}
+                                                </td>
+
                                                 <td>{{i.3}}</td>
                                                 <td><a href='edit/{{i.0}}'> Editar</a> | <a href='delete/{{i.0}}'>Eliminar </a> </td>
                                             </tr>

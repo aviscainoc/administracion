@@ -83,7 +83,7 @@
                                             <th>Estado</th>
                                             <th>Acciones</th>
                                         </tr>
-                                    </thead>
+                                    </thead>  
                                     <tfoot>
                                         <tr>
                                             <th>Id</th>
@@ -99,8 +99,16 @@
                                                 <td>{{i.0}}</td>
                                                 <td>{{i.1}}</td>
                                                 <td>{{i.2}}</td>
-                                                <td>{{i.3}}</td>
-                                                <td><a href='edit/{{i.0}}'> Editar</a> | <a href='delete/{{i.0}}'>Eliminar </a> </td>
+                                                <td>
+                                                {% if i.3 == 'AP'%}
+                                                Aprobado
+                                                {% elif i.3 == 'PEN' %}
+                                                Pendiente
+                                                 {% elif i.3 == 'ELM' %}
+                                                Eliminado
+                                                {% endif %}
+                                                </td>
+                                                <td><a href='editarEmpresa/{{i.0}}'> Editar</a> | <a href='delete/{{i.0}}'>Eliminar </a> </td>
                                             </tr>
                                         {% endfor %}
                                     </tbody>

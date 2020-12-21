@@ -17,14 +17,19 @@ from django.contrib import admin
 from django.urls import path
 from core import views
 
+
 urlpatterns = [
     path('', views.home, name="home"),
     path('login/', views.login, name="login"),
     path('registrase/', views.registrarse, name="registrarse"),
     path('recuperarContrasenia/', views.recuperarContrasenia, name="recuperarContrasenia"),
     path('empresas/', views.empresas, name="empresas"),
-    path('productoServicios/', views.productoServicios, name="productoServicios"),
-    path('reportes/', views.reportes, name="reportes"),
     path('crearEmpresa/',views.crearEmpresa, name="crearEmpresa"),
+    path('empresas/editarEmpresa/<int:id>',views.editarEmpresa, name="editarEmpresa"),
+    path('productoServicios/', views.productoServicios, name="productoServicios"),
+    path('CrearProductos/',views.CrearProductos, name="CrearProductos"),
+    path('editarProductoServicio/',views.editarProductoServicio , name="editarProductoServicio"),
+    path('reportes/', views.reportes, name="reportes"),
     path('admin/', admin.site.urls), 
 ]
+  
