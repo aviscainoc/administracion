@@ -20,15 +20,18 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Bienvenido Promoshop</h1>
                                     </div>
-                                    <form class="user">
+                                    <form class="user" method="post">{% csrf_token %}
+                                        {% if form.non_field_errors %}
+                                             <p style="color:red">Usuario o contraseña incorrectos, prueba de nuevo.</p>
+                                        {% endif %}
                                         <div class="form-group">
                                             <input type="email" class="form-control form-control-user"
-                                                id="exampleInputEmail" aria-describedby="emailHelp"
-                                                placeholder="Ingresa tu correo...">
+                                                id="correo" name= "correo" aria-describedby="emailHelp"
+                                                placeholder="Ingresa tu correo..." required>
                                         </div>
                                         <div class="form-group">
                                             <input type="password" class="form-control form-control-user"
-                                                id="exampleInputPassword" placeholder="Ingresa tu contraseña">
+                                                id="pass" name= "pass" placeholder="Ingresa tu contraseña" required>
                                         </div>
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
@@ -36,9 +39,7 @@
                                                 <label class="custom-control-label" for="customCheck">Recuerdame</label>
                                             </div>
                                         </div>
-                                        <a href="home.html" class="btn btn-primary btn-user btn-block">
-                                            Iniciar
-                                        </a>
+                                        <p><input type="submit" class="btn btn-primary btn-block" value="Acceder"></p>
                                         <hr>
                                         
                                     </form>

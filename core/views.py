@@ -6,6 +6,8 @@ import datetime
 
 
 from core.models import Empresa
+from core.models import Usuario
+from core.models import Usuariorol
 
 #aqui creamos la conexion con la base
 conn =mcdb.connect(host="localhost", user="root", passwd="cuenca", database="promoscuencav2")
@@ -20,13 +22,13 @@ def home(request):
 
 def editarEmpresa(request, id):
     
-    print("Llega al metodo y su id es: ",id)
     cur.execute("select * from empresa where id = {}".format(id))
-    empresas = cur.fetchone()
+    editarEmpresa = cur.fetchone()
     #return list(data)
-    print(list(empresas))
-    #empresas= Empresa.
-    return render(request,"core/editarEmpresa.html",{'editarEmpresa':empresas})
+    print ("Datos de edicion:")
+    print(list(editarEmpresa))
+    #mpresas= Empresa.
+    return render(request,"core/editarEmpresa.html",{'editarEmpresa':editarEmpresa})
 
 
 def empresas(request):
@@ -39,7 +41,9 @@ def crearEmpresa(request):
     datos= cur.fetchall()    
     # print(list(datos) ,'\n')   
     if request.method == 'POST':
-        logo = request.POST["image"]
+
+        if bool(request.FILES.get('image',False))==True:
+            logo=request.FILES['image']
         empres = request.POST['empresa']
         slogan = request.POST['slogan']
         descripcion = request.POST['desc']
@@ -53,23 +57,25 @@ def crearEmpresa(request):
 
         estado="PEN"
 
-        d = datetime.date(2020, 12, 17) 
+        
+        fechaActual = datetime.datetime.now()
 
         #insertar datos
-        empr = Empresa(descripcion=descripcion,eslogan=slogan,facebook=facebook,nombre=empres,twitter=twritter,web=pagWeb,
-        fechacreacion=d ,fechafin=d, top=0, vecesvisitada=10,servicios= 0, slug=catServicio,comision=porcetComision,
-        estado=estado, horaapertura=HoraAbre,horacierre=HoraCierra )
+        empresa = Empresa(descripcion=descripcion,eslogan=slogan,facebook=facebook,nombre=empres,twitter=twritter,web=pagWeb,
+        fechacreacion=fechaActual ,fechafin=fechaActual, top=0, vecesvisitada=0,servicios= 0, slug=catServicio,comision=porcetComision,
+        estado=estado, horaapertura=HoraAbre,horacierre=HoraCierra, urlfotoperfil=logo)
         
-        empr.save()
-        print("datos de empresa: ",empr)
+        empresa.save()
         print("empresa creada")
+
 
     return render(request,'core/crearEmpresa.html',{'categoriaempresa':datos})
      
 #Gestion Productos
 def productoServicios(request):
     cur.execute("select prod.id, prod.nombre, prod.estado, em.nombre from promocionproducto as prod, empresa as em where prod.Empresa_idEmpresa = em.id")
-    datosProductos= cur.fetchall()    
+    datosProductos= cur.fetchall() 
+       
       
     return render(request,"core/productoServicios.html",{'promocionproducto':datosProductos})
 
@@ -81,6 +87,15 @@ def editarProductoServicio(request):
 
 #Gestion Login y Registro de Users
 def login(request):
+
+    if request.method == 'POST':
+        usuario = request.POST['correo']
+        password= request.POST['pass']
+        print("datos : ",usuario, "  : ",password)  
+
+ 
+    
+    
     return render(request,"core/login.html")
 
 def registrarse(request):

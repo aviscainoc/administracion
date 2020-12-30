@@ -309,7 +309,7 @@ class Empresa(models.Model):
     top = models.IntegerField()
     twitter = models.CharField(max_length=200, blank=True, null=True)
     urlbaner = models.CharField(db_column='urlBaner', max_length=200, blank=True, null=True)  # Field name made lowercase.
-    urlfotoperfil = models.CharField(db_column='urlFotoPerfil', max_length=200, blank=True, null=True)  # Field name made lowercase.
+    urlfotoperfil = models.ImageField(upload_to="ftperfil", db_column='urlFotoPerfil', blank=True, null=True)  # Field name made lowercase.
     vecesvisitada = models.IntegerField(db_column='vecesVisitada')  # Field name made lowercase.
     web = models.CharField(max_length=200, blank=True, null=True)
     usuariocomision = models.ForeignKey('Usuario', models.DO_NOTHING, db_column='UsuarioComision_id', blank=True, null=True)  # Field name made lowercase.
