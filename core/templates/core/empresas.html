@@ -1,25 +1,11 @@
 {% extends 'core/base.html' %}
+{% load static  %}
 {% block title %}Empresas{% endblock %}
 
 {% block content %}
-    
+
+<body id="page-top">
     <div id="wrapper">
-
-        <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-
-
-            <!-- Divider -->
-            <hr class="sidebar-divider d-none d-md-block">
-
-            <!-- Sidebar Toggler (Sidebar) -->
-            <div class="text-center d-none d-md-inline">
-                <button class="rounded-circle border-0" id="sidebarToggle"></button>
-            </div>
-
-        </ul>
-        <!-- End of Sidebar -->
-
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
 
@@ -36,19 +22,7 @@
                         </button>
                     </form>
 
-                    <!-- Topbar Search -->
-                    <form
-                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                        <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Escribe aqui..."
-                                aria-label="Search" aria-describedby="basic-addon2">
-                            <div class="input-group-append">
-                                <button class="btn btn-primary" type="button">
-                                    <i class="fas fa-search fa-sm"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+                
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
@@ -65,7 +39,7 @@
                                 <form class="form-inline mr-auto w-100 navbar-search">
                                     <div class="input-group">
                                         <input type="text" class="form-control bg-light border-0 small"
-                                            placeholder="Buscar" aria-label="Search"
+                                            placeholder="Search for..." aria-label="Search"
                                             aria-describedby="basic-addon2">
                                         <div class="input-group-append">
                                             <button class="btn btn-primary" type="button">
@@ -76,57 +50,68 @@
                                 </form>
                             </div>
                         </li>
-                       
+
+
+                        <div class="topbar-divider d-none d-sm-block"></div>
+
 
                     </ul>
 
                 </nav>
-                <!-- The second value will be selected initially -->
-                <label for="Name" class="form-control bg-light border-0 small">Buscar por: </label>
-                <select name="select">
-                    <option value="value1">Publicadas</option> 
-                    <option value="value2" selected>Pendientes</option>
-                    
-                </select>
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Empresas</h1>
+                    <h1 class="h3 mb-2 text-gray-800">   Empresas</h1>
+                    
+
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
-                       
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary"></h6>
+                        </div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
-                                        <tr>
+                                       <tr>
                                             <th>Id</th>
                                             <th>Nombre</th>
                                             <th>Fecha de Creacion</th>
+                                            <th>Estado</th>
                                             <th>Acciones</th>
                                         </tr>
-                                    </thead>
+                                    </thead>  
                                     <tfoot>
                                         <tr>
                                             <th>Id</th>
                                             <th>Nombre</th>
                                             <th>Fecha de Creacion</th>
+                                            <th>Estado</th>
                                             <th>Acciones</th>
                                         </tr>
                                     </tfoot>
-
-                                    {% for i in empresa %}
-                                        <tr>
-                                            <td>{{i.0}}</td>
-                                            <td>{{i.1}}</td>
-                                            <td>{{i.2}}</td>
-                                            <td><a href='edit/{{i.0}}'> Editar</a> | <a href='delete/{{i.0}}'>Eliminar </a> </td>
-                                        </tr>
-                                    {% endfor %}
-                                    
+                                    <tbody>
+                                         {% for i in empresa %}
+                                            <tr>
+                                                <td>{{i.0}}</td>
+                                                <td>{{i.1}}</td>
+                                                <td>{{i.2}}</td>
+                                                <td>
+                                                {% if i.3 == 'AP'%}
+                                                Aprobado
+                                                {% elif i.3 == 'PEN' %}
+                                                Pendiente
+                                                 {% elif i.3 == 'ELM' %}
+                                                Eliminado
+                                                {% endif %}
+                                                </td>
+                                                <td><a href='editarEmpresa/{{i.0}}'> Editar</a> | <a href='delete/{{i.0}}'>Eliminar </a> </td>
+                                            </tr>
+                                        {% endfor %}
+                                    </tbody>
                                 </table>
                             </div>
                         </div>
@@ -150,27 +135,9 @@
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
     </a>
+            
 
-    
-
-    <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
-
-    <!-- Page level plugins -->
-    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="js/demo/datatables-demo.js"></script>
-      
-
+</body>
 {% endblock %}
  
  
