@@ -28,8 +28,9 @@ urlpatterns = [
     path('empresas/editarEmpresa/<int:id>',views.editarEmpresa, name="editarEmpresa"),
     path('productoServicios/', views.productoServicios, name="productoServicios"),
     path('CrearProductos/',views.CrearProductos, name="CrearProductos"),
-    path('editarProductoServicio/',views.editarProductoServicio , name="editarProductoServicio"),
-    path('reportes/', views.reportes, name="reportes"),
+    path('productoServicios/editarProductoServicio/<int:id>',views.editarProductoServicio , name="editarProductoServicio"),
+    path('reportes/', views.RecuperarEmpresas, name="reportes"),
+    path('reportes/editarContrasenia/<int:id>', views.editarContrasenia, name="editarContrasenia"),
     path('admin/', admin.site.urls), 
 ]
   

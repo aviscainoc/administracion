@@ -77,7 +77,7 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                        <tr>
-                                            <th>Id</th>
+                                            
                                             <th>Nombre</th>
                                            
                                             <th>Acciones</th>
@@ -85,7 +85,7 @@
                                     </thead>  
                                     <tfoot>
                                         <tr>
-                                            <th>Id</th>
+                                            
                                             <th>Nombre</th>
                                           
                                             <th>Acciones</th>
@@ -94,10 +94,10 @@
                                     <tbody>
                                          {% for i in reporte %}
                                             <tr>
-                                                <td>{{i.0}}</td>
+                                                
                                                 <td>{{i.1}}</td>
                                                
-                                                <td><a href='editarContrasenia/{{i.0}}'> Editar</a> | <a href='delete/{{i.0}}'>Eliminar </a> </td>
+                                                <td><a href='editarEmpresa/{{i.0}}'> Editar</a> | <a href='delete/{{i.0}}'>Eliminar </a> </td>
                                             </tr>
                                         {% endfor %}
                                     </tbody>

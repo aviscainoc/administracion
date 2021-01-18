@@ -300,25 +300,27 @@ class DjangoSession(models.Model):
 
 
 class Empresa(models.Model):
-    descripcion = models.CharField(max_length=1000, blank=True, null=True)
-    eslogan = models.CharField(max_length=200, blank=True, null=True)
-    facebook = models.CharField(max_length=200, blank=True, null=True)
-    fechacreacion = models.DateTimeField(db_column='fechaCreacion')  # Field name made lowercase.
-    fechafin = models.DateTimeField(db_column='fechaFin')  # Field name made lowercase.
-    nombre = models.CharField(max_length=100)
-    top = models.IntegerField()
-    twitter = models.CharField(max_length=200, blank=True, null=True)
-    urlbaner = models.CharField(db_column='urlBaner', max_length=200, blank=True, null=True)  # Field name made lowercase.
-    urlfotoperfil = models.ImageField(upload_to="ftperfil", db_column='urlFotoPerfil', blank=True, null=True)  # Field name made lowercase.
-    vecesvisitada = models.IntegerField(db_column='vecesVisitada')  # Field name made lowercase.
-    web = models.CharField(max_length=200, blank=True, null=True)
-    usuariocomision = models.ForeignKey('Usuario', models.DO_NOTHING, db_column='UsuarioComision_id', blank=True, null=True)  # Field name made lowercase.
-    slug = models.CharField(max_length=150, blank=True, null=True)
-    estado = models.CharField(max_length=10)
-    comision = models.FloatField(blank=True, null=True)
-    servicios = models.IntegerField()
-    horaapertura = models.CharField(max_length=5)
-    horacierre = models.CharField(max_length=5)
+
+    class Empresa(models.Model):
+    estado = models.CharField(max_length=10, default="pendiente")
+    nombre = models.CharField(max_length=50, null=False, blank=False)
+    direccion = models.CharField(max_length=100, null=False, blank=False)
+    descripcion = models.CharField(max_length=100)
+    slogan = models.CharField(max_length=50)
+    telefono1 = models.CharField(max_length=10)
+    telefono2 = models.CharField(max_length=10)
+    calificacion = models.DecimalField(max_digits=2, decimal_places=1)
+    fecha_creacion = models.DateTimeField(auto_now=True)
+    fecha_fin_contrato = models.DateTimeField(null=True, blank=True)
+    portada = models.ImageField(default='portada.jpg')
+    comision = models.DecimalField(max_digits=5, decimal_places=2, default="Null")
+    orden = models.IntegerField(default=0)
+    veces_visitada = models.IntegerField()
+    latitud = models.DecimalField(max_digits=30, decimal_places=20)
+    longitud = models.DecimalField(max_digits=30, decimal_places=20)
+    usuario = models.ForeignKey(Usuario, models.DO_NOTHING)
+    categoria = models.ForeignKey(Categoria, models.DO_NOTHING)
+
 
     class Meta:
         managed = False

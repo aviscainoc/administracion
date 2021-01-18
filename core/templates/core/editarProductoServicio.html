@@ -1,20 +1,68 @@
 {% extends 'core/base.html' %}
-{% block title %}Editar Productos o Servicios{% endblock %}
+{% load static %}  
+{% block title %}Editar Productos y Servicios{% endblock %}
+
 {% block content %}
-       <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <h1>PÁGINA EN CONSTRUCCIÓN</h1>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
     
+    <div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="well well-sm">
+                <form  class="form-horizontal" method="POST">
+                    {% csrf_token %}
+                   
+                    <fieldset>
+                        
+                        <legend class="text-center header"> Editar Productos y Servicios  </legend>
+
+
+                        <div class="form-group">
+                            <span class="col-md-1 col-md-offset-2 text-center"><i class="material-icons"></i></span>
+                            <label for="Nombre">  Nombre del producto</label>
+                            <div class="col-md-8">
+                                <input id="producto" name="producto" type="text" value='{{producto.1}}' class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <span class="col-md-1 col-md-offset-2 text-center"><i class="material-icons"></i></span>
+                            <label for="Comentario">  Comentarios</label>
+                            <div class="col-md-8">
+                                <input id="comentario" name="comentario" type="text" value='{{producto.2}}' class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <span class="col-md-1 col-md-offset-2 text-center"><i class="material-icons"></i></span>
+                            <label for="Descripción">  Descripcion</label>
+                            <div class="col-md-8">
+                                <input id="descripcion" name="descripcion" type="text" value='{{producto.2}}' class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <span class="col-md-1 col-md-offset-2 text-center"><i class="material-icons"></i></span>
+                            <label for="Baner">  Baner(1 Si, 0 No)</label>
+                            <div class="col-md-8">
+                                <input id="baner" name="baner" type="text" value='{{producto.23}' class="form-control">
+                            </div>
+                        </div>
+
+
+
+
+
+
+                        
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+    
+      
+
 {% endblock %}
+ 
  

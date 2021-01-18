@@ -1,10 +1,6 @@
 from django.shortcuts import render, HttpResponse
 import mysql.connector as mcdb
 import datetime 
-  
-
-
-
 from core.models import Empresa
 from core.models import Usuario
 from core.models import Usuariorol
@@ -35,6 +31,28 @@ def empresas(request):
     cur.execute("select co.id, co.nombre, co.fechaCreacion, co.estado from empresa as co ")
     datos= cur.fetchall()     
     return render(request,'core/empresas.html',{'empresa':datos})
+
+def RecuperarEmpresas(request):
+    cur.execute("select co.id, co.nombre, co.fechaCreacion, co.estado from empresa as co ")
+    datos= cur.fetchall()    
+    ## print(list(datos)) 
+    return render(request,'core/reportes.html',{'reporte':datos})    
+
+def editarContrasenia(request, id):
+    
+    cur.execute("select us.Usuario_id from usuarioempresa as us where us.empresa_id = {}".format(id))
+    usuarioEmpresa = cur.fetchall()
+    idUserEmpr=usuarioEmpresa
+    print("datos encontrados")
+    print(idUserEmpr)
+    ##cur.execute("select * from usuario as u where u.id = {}".format(usuarioEmpresa))
+    ##usuarioCorreo = cur.fetchone()
+    #return list(data)
+    print ("Datos de edicion:")
+    ##print(usuarioCorreo)
+    #mpresas= Empresa.
+    return render(request,"core/editarEmpresa.html",{'editarEmpresa':editarEmpresa})
+
 
 def crearEmpresa(request):
     cur.execute("select co.id, co.nombre from categoriaempresa as co ")
@@ -82,7 +100,15 @@ def productoServicios(request):
 def CrearProductos(request):
     return render(request,"core/CrearProductos.html")
 
-def editarProductoServicio(request):
+def editarProductoServicio(request, id):
+    cur.execute("select * from empresa where id = {}".format(id))
+    editarEmpresa = cur.fetchone()
+    #return list(data)
+    print ("Datos de edicion:")
+    print(list(editarEmpresa))
+    #mpresas= Empresa.
+    return render(request,"core/editarEmpresa.html",{'editarEmpresa':editarEmpresa})
+    
     return render(request,"core/editarProductoServicio.html")
 
 #Gestion Login y Registro de Users
