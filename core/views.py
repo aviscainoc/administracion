@@ -5,6 +5,7 @@ from core.models import Empresa
 from core.models import Usuario
 from core.models import Usuariorol
 
+
 #aqui creamos la conexion con la base
 conn =mcdb.connect(host="localhost", user="root", passwd="cuenca", database="promoscuencav2")
 
@@ -111,7 +112,16 @@ def editarProductoServicio(request, id):
     
     return render(request,"core/editarProductoServicio.html")
 
+<<<<<<< HEAD
+
+
+def register(request):
+    return render(request, "core/register.html")
+  
+
+=======
 #Gestion Login y Registro de Users
+>>>>>>> 6a717d827185f527ca9027d8b9e6b50e5cca4faf
 def login(request):
 
     if request.method == 'POST':
